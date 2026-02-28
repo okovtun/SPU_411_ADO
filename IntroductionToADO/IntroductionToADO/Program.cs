@@ -25,7 +25,13 @@ namespace IntroductionToADO
 			Console.WriteLine(connector.GetLastPrimaryKey(table));
 			Console.WriteLine(connector.GetNextPrimaryKey(table));
 			Console.WriteLine(connector.GetPrimaryKeyColumn(table));
-			connector.Insert("Directors", $"{connector.GetNextPrimaryKey("Directors")},N'Besson',N'Luc'");
+			connector.Insert
+				(
+	$"IF NOT EXISTS (SELECT * FROM Directors WHERE last_name=N'Scott' AND first_name=N'Gray') " +
+	$"INSERT Directors VALUES({connector.GetNextPrimaryKey("Directors")},N'Scott',N'Gray')"
+				);
+			//connector.Insert("Directors", $"{connector.GetNextPrimaryKey("Directors")},N'Besson',N'Luc'");
+			connector.Update("UPDATE Directors SET last_name=N'Lettich',first_name=N'Sheldon' WHERE director_id=8");
 			connector.Select("*", "Directors");
 			Console.WriteLine("\n-------------------------------------------------------------\n");
 

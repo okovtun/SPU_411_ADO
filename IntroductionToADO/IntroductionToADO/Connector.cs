@@ -79,5 +79,13 @@ $"WHERE CONSTRAINT_NAME = (SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_
 		{
 			return GetLastPrimaryKey(table) + 1;
 		}
+
+		public void Update(string cmd)
+		{
+			SqlCommand command = new SqlCommand(cmd, connection);
+			connection.Open();
+			command.ExecuteNonQuery();
+			connection.Close();
+		}
 	}
 }
