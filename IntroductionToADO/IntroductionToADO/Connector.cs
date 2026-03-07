@@ -41,12 +41,35 @@ namespace IntroductionToADO
 			cmd += ";";
 			Select(cmd);
 		}
+		public string GetTableFromInsert(string cmd)
+		{
+			string[] parts = cmd.Split(' ', '(', ')');
+			return parts[1];
+		}
+		public string GetFieldsFromInsert(string cmd)
+		{
+			string[] parts = cmd.Split('(', ')');
+			return parts[1];
+		}
+		public string GetValuesFromInsert(string cmd)
+		{
+			string[] parts = cmd.Split('(', ')');
+			return parts[3];
+		}
+
 		public void Insert(string cmd)
 		{
+			Console.WriteLine(cmd);
+			Console.WriteLine(GetTableFromInsert(cmd));
+			Console.WriteLine(GetFieldsFromInsert(cmd));
+			Console.WriteLine(GetValuesFromInsert(cmd));
+			if (GetPrimaryKey(GetTableFromInsert(cmd), GetFieldsFromInsert(cmd), GetValuesFromInsert(cmd)) != null)
+				return;
 			connection.Open();
 			SqlCommand command = new SqlCommand(cmd, connection);
 			command.ExecuteNonQuery();
 			connection.Close();
+			Console.WriteLine(GetValuesFromInsert(cmd) + "Added to database");
 		}
 		public void Insert(string table, string values)
 		{
@@ -91,7 +114,12 @@ $"WHERE CONSTRAINT_NAME = (SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_
 			string condition = "";
 			for (int i = 0; i < s_values.Length; i++)
 			{
-				condition += $"{s_fields[i].Trim()}=N'{s_values[i].Trim()}'";
+				if (s_fields[i].Contains("_id")) continue;
+				string value = s_values[i].Trim();
+				condition += 
+					(value.Length > 1 && value[0]!='N' && value[1]!='\'')
+					? $"{s_fields[i].Trim()}=N'{s_values[i].Trim()}'"
+					: $"{s_fields[i].Trim()}={s_values[i].Trim()}";
 				if (i != s_values.Length - 1) condition += " AND ";
 			}
 			string cmd = $"SELECT {GetPrimaryKeyColumn(table)} FROM {table} WHERE {condition}";

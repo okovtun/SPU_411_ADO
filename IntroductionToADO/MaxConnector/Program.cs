@@ -18,6 +18,11 @@ namespace MaxConnector
 
 			Connector connector = new Connector(connection_string);
 
+			connector.Insert
+	(
+$"INSERT Directors(director_id,first_name,last_name) VALUES({connector.GetNextPrimaryKey("Directors")},N'Guy',N'Richie')"
+	);
+
 			connector.Select("title,year,first_name,last_name", "Movies,Directors", "director=director_id");
 
 			Console.WriteLine("\n-------------------------------------------------------------\n");

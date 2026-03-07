@@ -2,6 +2,11 @@
 https://www.youtube.com/playlist?list=PLeqyOOqxeiINoom68S0P1Akoxr1nKSPpX
 
 TODO:
+1. Парсинг SQL-запросов выенсти в отдельный класс;
+2. Сделать резервную копию базы 'SPU_411_Import';	DONE
+3. Протестировать Connector на Базе 'SPU_411_Import';
+
+DONE:
 1. Преотвратить добавление одинаковых записей в таблицы;
 2. Упаковать класс 'Connector' в DLL, и проветрить эту DLL на другом проекте,
    например 'ADO\ConnectorCheck';
