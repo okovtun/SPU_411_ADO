@@ -71,6 +71,28 @@ $"FROM INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE " +
 $"WHERE CONSTRAINT_NAME = (SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_NAME = N'{table}' AND CONSTRAINT_TYPE=N'PRIMARY KEY')"
 );
 		}
+		public object GetPrimaryKey(string cmd)
+		{
+			SqlCommand command = new SqlCommand(cmd, connection);
+			connection.Open();
+			object primary_key = command.ExecuteScalar();
+			connection.Close();
+			return primary_key;
+		}
+		public object GetPrimaryKey(string table, string fields, string values)
+		{
+			string[] s_fields = fields.Split(',');
+			string[] s_values = values.Split(',');
+			if (s_fields.Length != s_values.Length) return null;
+			string condition = "";
+			for (int i = 0; i < s_values.Length; i++)
+			{
+				condition += $"{s_fields[i].Trim()}=N'{s_values[i].Trim()}'";
+				if (i != s_values.Length - 1) condition += " AND ";
+			}
+			string cmd = $"SELECT {GetPrimaryKeyColumn(table)} FROM {table} WHERE {condition}";
+			return Scalar(cmd);
+		}
 		public int GetLastPrimaryKey(string table)
 		{
 			return Convert.ToInt32(Scalar($"SELECT MAX({GetPrimaryKeyColumn(table)}) FROM {table}"));

@@ -37,6 +37,8 @@ namespace IntroductionToADO
 
 			connector.Select(cmd);
 
+			Console.WriteLine(connector.GetPrimaryKey("SELECT director_id FROM Directors WHERE last_name=N'Cameron' AND first_name=N'James'"));
+			Console.WriteLine(connector.GetPrimaryKey("Directors", "  last_name,  first_name ","   Cameron  ,  James   "));
 		}
 	}
 }
