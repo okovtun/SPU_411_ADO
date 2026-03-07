@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using System.Data.SqlClient;
 
-namespace IntroductionToADO
+namespace MaxConnector
 {
 	class Connector
 	{
@@ -16,6 +16,10 @@ namespace IntroductionToADO
 		{
 			this.connection_string = connection_string;
 			this.connection = new SqlConnection(connection_string);
+		}
+		public void Execute(string cmd)
+		{
+
 		}
 		public void Select(string cmd)
 		{
@@ -62,26 +66,13 @@ namespace IntroductionToADO
 			connection.Close();
 			return value;
 		}
-		public string GetPrimaryKeyColumn(string table)
-		{
-			string cmd = $"SELECT COLUMN_NAME " +
-$"FROM INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE " +
-$"WHERE CONSTRAINT_NAME = (SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_NAME = N'{table}' AND CONSTRAINT_TYPE=N'PRIMARY KEY')";
-			return (string)Scalar(cmd);
-			/*return (string)Scalar
-(
-$"SELECT COLUMN_NAME " +
-$"FROM INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE " +
-$"WHERE CONSTRAINT_NAME = (SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_NAME = N'{table}' AND CONSTRAINT_TYPE=N'PRIMARY KEY')"
-);*/
-		}
 		public object GetPrimaryKey(string cmd)
 		{
 			SqlCommand command = new SqlCommand(cmd, connection);
 			connection.Open();
-			object primary_key = command.ExecuteScalar();
+			object primaryKey = command.ExecuteScalar();
 			connection.Close();
-			return primary_key;
+			return primaryKey;
 		}
 		public object GetPrimaryKey(string table, string fields, string values)
 		{
@@ -96,6 +87,20 @@ $"WHERE CONSTRAINT_NAME = (SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_
 			}
 			string cmd = $"SELECT {GetPrimaryKeyColumn(table)} FROM {table} WHERE {condition}";
 			return Scalar(cmd);
+		}
+		public string GetPrimaryKeyColumn(string table)
+		{
+			string pk = $"{table.Substring(0, table.Length - 1)}_id".ToLower();
+			string cmd = $"SELECT COLUMN_NAME " +
+			$"FROM INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE " +
+			$"WHERE CONSTRAINT_NAME = (SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_NAME = N'{table}' AND CONSTRAINT_TYPE=N'PRIMARY KEY')";
+			return (string)Scalar(cmd);
+			// 			return (string)Scalar
+			// (
+			// $"SELECT COLUMN_NAME " +
+			// $"FROM INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE " +
+			// $"WHERE CONSTRAINT_NAME = (SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_NAME = N'{table}' AND CONSTRAINT_TYPE=N'PRIMARY KEY')"
+			// );
 		}
 		public int GetLastPrimaryKey(string table)
 		{
