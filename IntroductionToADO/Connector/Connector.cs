@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Data;
 using System.Data.SqlClient;
 
 namespace Connector
@@ -49,32 +50,38 @@ namespace Connector
 			this.connection_string = connection_string;
 			this.connection = new SqlConnection(connection_string);
 		}
-		public void Select(string fields, string tables, string condition = "")
+		public DataTable Select(string fields, string tables, string condition = "")
 		{
 			string cmd = $"SELECT {fields} FROM {tables}";
 			if (condition != "") cmd += $" WHERE {condition}";
 			cmd += ";";
 
-			Select(cmd);
+			return Select(cmd);
 		}
-		public void Select(string cmd)
+		public DataTable Select(string cmd)
 		{
-
+			DataTable table = new DataTable();
 			connection.Open();
 			SqlCommand command = new SqlCommand(cmd, connection);
 			SqlDataReader reader = command.ExecuteReader();
+			for (int i = 0; i < reader.FieldCount; i++)
+				table.Columns.Add(reader.GetName(i));
 			while (reader.Read())
 			{
+				DataRow row = table.NewRow();
 				//Console.WriteLine($"{reader[0]}\t{reader[1]} {reader[2]}");
 				for (int i = 0; i < reader.FieldCount; i++)
 				{
+					row[i] = reader[i];
 					Console.Write(reader[i].ToString().PadRight(28));
 				}
 				Console.WriteLine();
+				table.Rows.Add(row);
 			}
 
 			reader.Close();
 			connection.Close();
+			return table;
 		}
 		public string GetTableFromInsert(string cmd)
 		{
