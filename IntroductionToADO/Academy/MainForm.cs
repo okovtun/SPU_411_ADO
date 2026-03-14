@@ -24,9 +24,13 @@ namespace Academy
 
 			movies_connector = new Connector("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Movies_SPU_411;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 			//dgvDirections.DataSource = movies_connector.Select("SELECT * FROM Movies");
+			//toolStripStatusLabel.Text = $"Колчиество направлений обучения: {connector.Scalar("SELECT COUNT(*) FROM Directions")}";
+		}
+
+		private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+		{
 			dgvDirections.DataSource = connector.Select("SELECT * FROM Directions");
 			toolStripStatusLabel.Text = $"Колчиество направлений обучения: {dgvDirections.RowCount - 1}";
-			//toolStripStatusLabel.Text = $"Колчиество направлений обучения: {connector.Scalar("SELECT COUNT(*) FROM Directions")}";
 		}
 	}
 }
