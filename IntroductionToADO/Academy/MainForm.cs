@@ -30,9 +30,9 @@ namespace Academy
 				"group_name,weekdays,start_time,start_date,direction_name",
 				"direction=direction_id"
 				),
-			new Query("Directions",	"*"),
+			new Query("Directions", "*"),
 			new Query("Disciplines","*"),
-			new Query("Teachers",	"*"),
+			new Query("Teachers",   "*"),
 		};
 		string[] statusBarSignatures =
 		{
@@ -74,7 +74,7 @@ namespace Academy
 		public static extern bool AllocConsole();
 		void LoadDataToComboBox(ComboBox comboBox)
 		{
-			string table = comboBox.Name.Substring(Array.FindLastIndex<char>(comboBox.Name.ToCharArray(), Char.IsUpper))+"s";
+			string table = comboBox.Name.Substring(Array.FindLastIndex<char>(comboBox.Name.ToCharArray(), Char.IsUpper)) + "s";
 			string dictionary_name = $"d_{table}".ToLower();
 			Console.WriteLine("\n====================================================================\n");
 			Console.WriteLine(table);
@@ -98,6 +98,15 @@ namespace Academy
 			int i = tabControl.SelectedIndex;
 			tables[i].DataSource = connector.Select(queries[i].ToString());
 			toolStripStatusLabel.Text = $"{statusBarSignatures[i]}: {tables[i].RowCount - 1}";
+		}
+
+		private void cbGroupsDirection_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (cbGroupsDirection.SelectedIndex != -1)
+				tables[1].DataSource = connector.Select
+					(
+queries[1].ToString() + $" AND direction={d_trees["d_directions"][cbGroupsDirection.SelectedItem.ToString()]}"
+					);
 		}
 	}
 }
