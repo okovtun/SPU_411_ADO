@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.Runtime.InteropServices;
+using System.Configuration;
 
 using DBtools;
 
@@ -54,9 +55,8 @@ namespace Academy
 			InitializeComponent();
 			tables = new DataGridView[] { dgvStudents, dgvGroups, dgvDirections, dgvDisciplines, dgvTeachers };
 			AllocConsole();
-			connector = new DBtools.Connector(
-"Data Source=DESKTOP-QHG18FL\\SQLEXPRESS;Initial Catalog=SPU_411_Import;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-
+			//connector = new DBtools.Connector("Data Source=DESKTOP-QHG18FL\\SQLEXPRESS;Initial Catalog=SPU_411_Import;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+			connector = new Connector(ConfigurationManager.ConnectionStrings["SPU_411_Import"].ConnectionString);
 			movies_connector = new Connector("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Movies_SPU_411;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 			//dgvDirections.DataSource = movies_connector.Select("SELECT * FROM Movies");
 			//toolStripStatusLabel.Text = $"Колчиество направлений обучения: {connector.Scalar("SELECT COUNT(*) FROM Directions")}";
@@ -126,6 +126,12 @@ queries[1].ToString() + $" AND direction={d_trees["d_directions"][cbGroupsDirect
 			dgvStudents.DataSource = connector
 				.Select(queries[0].ToString() + $" AND [group]={d_trees["d_groups"][cbStudentsGroup.SelectedItem.ToString()]}");
 			toolStripStatusLabel.Text = $"{statusBarSignatures[0]}: {dgvStudents.RowCount - 1}";
+		}
+
+		private void buttonAdd_Click(object sender, EventArgs e)
+		{
+			StudentForm form = new StudentForm();
+			form.ShowDialog();
 		}
 	}
 }
