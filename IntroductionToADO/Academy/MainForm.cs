@@ -108,5 +108,24 @@ namespace Academy
 queries[1].ToString() + $" AND direction={d_trees["d_directions"][cbGroupsDirection.SelectedItem.ToString()]}"
 					);
 		}
+
+		private void cbStudentsDirection_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			cbStudentsGroup.Items.Clear();
+			d_trees["d_groups"] = connector.
+				LoadDictionary("Groups", $"direction={d_trees["d_directions"][cbStudentsDirection.SelectedItem.ToString()]}");
+			cbStudentsGroup.Items.AddRange(d_trees["d_groups"].Keys.ToArray());
+
+			dgvStudents.DataSource = connector.
+				Select(queries[0].ToString() + $" AND direction={d_trees["d_directions"][cbStudentsDirection.SelectedItem.ToString()]}");
+			toolStripStatusLabel.Text = $"{statusBarSignatures[0]}: {dgvStudents.RowCount - 1}";
+		}
+
+		private void cbStudentsGroup_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			dgvStudents.DataSource = connector
+				.Select(queries[0].ToString() + $" AND [group]={d_trees["d_groups"][cbStudentsGroup.SelectedItem.ToString()]}");
+			toolStripStatusLabel.Text = $"{statusBarSignatures[0]}: {dgvStudents.RowCount - 1}";
+		}
 	}
 }
