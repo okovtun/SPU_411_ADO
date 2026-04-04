@@ -37,11 +37,16 @@
 			// 
 			// pictureBoxPhoto
 			// 
+			this.pictureBoxPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.pictureBoxPhoto.Size = new System.Drawing.Size(168, 217);
 			// 
 			// buttonPhoto
 			// 
 			this.buttonPhoto.Location = new System.Drawing.Point(445, 242);
+			// 
+			// labelID
+			// 
+			this.labelID.Location = new System.Drawing.Point(157, 321);
 			// 
 			// labelGroup
 			// 
@@ -97,6 +102,7 @@
 			this.Controls.Add(this.labelGroup);
 			this.Name = "StudentForm";
 			this.Text = "Student";
+			this.Controls.SetChildIndex(this.labelID, 0);
 			this.Controls.SetChildIndex(this.rtbEmail, 0);
 			this.Controls.SetChildIndex(this.rtbPhone, 0);
 			this.Controls.SetChildIndex(this.labelEmail, 0);

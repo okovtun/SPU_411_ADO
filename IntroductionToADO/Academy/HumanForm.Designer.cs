@@ -50,7 +50,7 @@
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label1.Location = new System.Drawing.Point(75, 47);
+			this.label1.Location = new System.Drawing.Point(85, 13);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(110, 25);
 			this.label1.TabIndex = 0;
@@ -60,7 +60,7 @@
 			// 
 			this.labelID.AutoSize = true;
 			this.labelID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.labelID.Location = new System.Drawing.Point(147, 13);
+			this.labelID.Location = new System.Drawing.Point(157, 303);
 			this.labelID.Name = "labelID";
 			this.labelID.Size = new System.Drawing.Size(38, 25);
 			this.labelID.TabIndex = 1;
@@ -70,7 +70,7 @@
 			// 
 			this.labelFirstName.AutoSize = true;
 			this.labelFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.labelFirstName.Location = new System.Drawing.Point(126, 81);
+			this.labelFirstName.Location = new System.Drawing.Point(136, 47);
 			this.labelFirstName.Name = "labelFirstName";
 			this.labelFirstName.Size = new System.Drawing.Size(59, 25);
 			this.labelFirstName.TabIndex = 2;
@@ -80,7 +80,7 @@
 			// 
 			this.labelMiddleName.AutoSize = true;
 			this.labelMiddleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.labelMiddleName.Location = new System.Drawing.Point(74, 115);
+			this.labelMiddleName.Location = new System.Drawing.Point(84, 81);
 			this.labelMiddleName.Name = "labelMiddleName";
 			this.labelMiddleName.Size = new System.Drawing.Size(111, 25);
 			this.labelMiddleName.TabIndex = 3;
@@ -90,7 +90,7 @@
 			// 
 			this.labelBirthDate.AutoSize = true;
 			this.labelBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.labelBirthDate.Location = new System.Drawing.Point(13, 149);
+			this.labelBirthDate.Location = new System.Drawing.Point(23, 115);
 			this.labelBirthDate.Name = "labelBirthDate";
 			this.labelBirthDate.Size = new System.Drawing.Size(172, 25);
 			this.labelBirthDate.TabIndex = 4;
@@ -99,7 +99,7 @@
 			// rtbLastName
 			// 
 			this.rtbLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.rtbLastName.Location = new System.Drawing.Point(191, 47);
+			this.rtbLastName.Location = new System.Drawing.Point(201, 13);
 			this.rtbLastName.Multiline = false;
 			this.rtbLastName.Name = "rtbLastName";
 			this.rtbLastName.Size = new System.Drawing.Size(223, 25);
@@ -109,7 +109,7 @@
 			// rtbFirstName
 			// 
 			this.rtbFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.rtbFirstName.Location = new System.Drawing.Point(191, 80);
+			this.rtbFirstName.Location = new System.Drawing.Point(201, 46);
 			this.rtbFirstName.Multiline = false;
 			this.rtbFirstName.Name = "rtbFirstName";
 			this.rtbFirstName.Size = new System.Drawing.Size(223, 25);
@@ -119,7 +119,7 @@
 			// rtbMiddleName
 			// 
 			this.rtbMiddleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.rtbMiddleName.Location = new System.Drawing.Point(191, 113);
+			this.rtbMiddleName.Location = new System.Drawing.Point(201, 79);
 			this.rtbMiddleName.Multiline = false;
 			this.rtbMiddleName.Name = "rtbMiddleName";
 			this.rtbMiddleName.Size = new System.Drawing.Size(223, 25);
@@ -131,7 +131,7 @@
 			this.dtpBirthDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.dtpBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.dtpBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtpBirthDate.Location = new System.Drawing.Point(191, 146);
+			this.dtpBirthDate.Location = new System.Drawing.Point(201, 112);
 			this.dtpBirthDate.Name = "dtpBirthDate";
 			this.dtpBirthDate.Size = new System.Drawing.Size(223, 31);
 			this.dtpBirthDate.TabIndex = 8;
@@ -159,7 +159,7 @@
 			// rtbEmail
 			// 
 			this.rtbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.rtbEmail.Location = new System.Drawing.Point(191, 185);
+			this.rtbEmail.Location = new System.Drawing.Point(201, 151);
 			this.rtbEmail.Multiline = false;
 			this.rtbEmail.Name = "rtbEmail";
 			this.rtbEmail.Size = new System.Drawing.Size(223, 25);
@@ -169,7 +169,7 @@
 			// rtbPhone
 			// 
 			this.rtbPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.rtbPhone.Location = new System.Drawing.Point(191, 218);
+			this.rtbPhone.Location = new System.Drawing.Point(201, 184);
 			this.rtbPhone.Multiline = false;
 			this.rtbPhone.Name = "rtbPhone";
 			this.rtbPhone.Size = new System.Drawing.Size(223, 25);
@@ -180,7 +180,7 @@
 			// 
 			this.labelEmail.AutoSize = true;
 			this.labelEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.labelEmail.Location = new System.Drawing.Point(107, 183);
+			this.labelEmail.Location = new System.Drawing.Point(117, 149);
 			this.labelEmail.Name = "labelEmail";
 			this.labelEmail.Size = new System.Drawing.Size(78, 25);
 			this.labelEmail.TabIndex = 13;
@@ -190,7 +190,7 @@
 			// 
 			this.labelPhone.AutoSize = true;
 			this.labelPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.labelPhone.Location = new System.Drawing.Point(77, 217);
+			this.labelPhone.Location = new System.Drawing.Point(87, 183);
 			this.labelPhone.Name = "labelPhone";
 			this.labelPhone.Size = new System.Drawing.Size(108, 25);
 			this.labelPhone.TabIndex = 14;
@@ -200,7 +200,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(639, 310);
+			this.ClientSize = new System.Drawing.Size(639, 352);
 			this.Controls.Add(this.labelPhone);
 			this.Controls.Add(this.labelEmail);
 			this.Controls.Add(this.rtbPhone);
@@ -228,7 +228,6 @@
 		#endregion
 
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label labelID;
 		private System.Windows.Forms.Label labelFirstName;
 		private System.Windows.Forms.Label labelMiddleName;
 		protected System.Windows.Forms.Label labelBirthDate;
@@ -242,5 +241,6 @@
 		protected System.Windows.Forms.RichTextBox rtbPhone;
 		protected System.Windows.Forms.Label labelEmail;
 		protected System.Windows.Forms.Label labelPhone;
+		protected System.Windows.Forms.Label labelID;
 	}
 }
