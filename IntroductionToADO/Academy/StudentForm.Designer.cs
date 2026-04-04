@@ -41,13 +41,13 @@
 			// 
 			// buttonPhoto
 			// 
-			this.buttonPhoto.Location = new System.Drawing.Point(445, 236);
+			this.buttonPhoto.Location = new System.Drawing.Point(445, 242);
 			// 
 			// labelGroup
 			// 
 			this.labelGroup.AutoSize = true;
 			this.labelGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.labelGroup.Location = new System.Drawing.Point(96, 201);
+			this.labelGroup.Location = new System.Drawing.Point(97, 252);
 			this.labelGroup.Name = "labelGroup";
 			this.labelGroup.Size = new System.Drawing.Size(89, 25);
 			this.labelGroup.TabIndex = 11;
@@ -55,9 +55,10 @@
 			// 
 			// cbStudentsGroup
 			// 
+			this.cbStudentsGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbStudentsGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.cbStudentsGroup.FormattingEnabled = true;
-			this.cbStudentsGroup.Location = new System.Drawing.Point(192, 197);
+			this.cbStudentsGroup.Location = new System.Drawing.Point(192, 249);
 			this.cbStudentsGroup.Name = "cbStudentsGroup";
 			this.cbStudentsGroup.Size = new System.Drawing.Size(222, 33);
 			this.cbStudentsGroup.TabIndex = 12;
@@ -96,6 +97,14 @@
 			this.Controls.Add(this.labelGroup);
 			this.Name = "StudentForm";
 			this.Text = "Student";
+			this.Controls.SetChildIndex(this.rtbEmail, 0);
+			this.Controls.SetChildIndex(this.rtbPhone, 0);
+			this.Controls.SetChildIndex(this.labelEmail, 0);
+			this.Controls.SetChildIndex(this.labelPhone, 0);
+			this.Controls.SetChildIndex(this.rtbLastName, 0);
+			this.Controls.SetChildIndex(this.rtbFirstName, 0);
+			this.Controls.SetChildIndex(this.rtbMiddleName, 0);
+			this.Controls.SetChildIndex(this.dtpBirthDate, 0);
 			this.Controls.SetChildIndex(this.pictureBoxPhoto, 0);
 			this.Controls.SetChildIndex(this.buttonPhoto, 0);
 			this.Controls.SetChildIndex(this.labelBirthDate, 0);
