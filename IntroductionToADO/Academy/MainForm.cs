@@ -132,6 +132,7 @@ queries[1].ToString() + $" AND direction={d_trees["d_directions"][cbGroupsDirect
 		{
 			StudentForm form = new StudentForm();
 			form.ShowDialog();
+			tabControl_SelectedIndexChanged(tabControl, null);
 		}
 	}
 }

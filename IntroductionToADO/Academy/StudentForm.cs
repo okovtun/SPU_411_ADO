@@ -40,7 +40,10 @@ namespace Academy
 				pictureBoxPhoto.Image,
 				Convert.ToInt32(cbStudentsGroup.SelectedValue)
 				);
+			Console.WriteLine(student.SerializePhoto());
 			DataBase.Connector.Insert($"INSERT Students({student.GetNames()}) VALUES ({student})");
+			student.id = (int)DataBase.Connector.Scalar($"SELECT stud_id FROM Students WHERE {student.GetCondition()}");
+			DataBase.Connector.UploadPhoto(student.SerializePhoto(), student.id, "photo", "Students");
 
 			//DBtools.Connector connector = new DBtools.Connector(ConfigurationManager.ConnectionStrings["SPU_411_Import"].ConnectionString);
 //			DataBase.Connector.Insert(

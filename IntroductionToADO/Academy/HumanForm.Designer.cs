@@ -141,6 +141,7 @@
 			this.pictureBoxPhoto.Location = new System.Drawing.Point(445, 13);
 			this.pictureBoxPhoto.Name = "pictureBoxPhoto";
 			this.pictureBoxPhoto.Size = new System.Drawing.Size(168, 232);
+			this.pictureBoxPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBoxPhoto.TabIndex = 9;
 			this.pictureBoxPhoto.TabStop = false;
 			// 
@@ -153,6 +154,7 @@
 			this.buttonPhoto.TabIndex = 10;
 			this.buttonPhoto.Text = "Обзор";
 			this.buttonPhoto.UseVisualStyleBackColor = true;
+			this.buttonPhoto.Click += new System.EventHandler(this.buttonPhoto_Click);
 			// 
 			// rtbEmail
 			// 
